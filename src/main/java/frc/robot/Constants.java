@@ -21,8 +21,8 @@ public final class Constants {
 
     //dummy values (all in this class)
 
-    public static final int kPivotPort = 1;
-    public static final int kIntakePort = 2;
+    public static final int kPivotPort = 8;
+    public static final int kIntakePort = 9;
 
     public static final double kPivotP = 0.002;
     public static final double kWinchP = 0.002;
