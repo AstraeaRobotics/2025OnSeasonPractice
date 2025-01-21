@@ -14,16 +14,17 @@ import frc.robot.Constants.GrabberConstants.PivotStates;
 public class SetGrabberPivotState extends InstantCommand {
   PivotStates m_desiredState;
   GrabberSubsystem m_GrabberSubsystem;
-  public SetGrabberPivotState(GrabberSubsystem GrabberSubsystem, PivotStates desiredState) {
+  public SetGrabberPivotState(GrabberSubsystem grabberSubsystem, PivotStates desiredState) {
     // Use addRequirements() here to declare subsystem dependencies.
-    this.m_GrabberSubsystem = GrabberSubsystem;
+    this.m_GrabberSubsystem = grabberSubsystem;
     this.m_desiredState = desiredState;
-    addRequirements(GrabberSubsystem);
+    addRequirements(grabberSubsystem);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
     m_GrabberSubsystem.setState(m_desiredState);
+    
   }
 }

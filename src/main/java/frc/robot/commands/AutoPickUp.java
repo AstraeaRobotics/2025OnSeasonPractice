@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.ParallelDeadlineGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
-import frc.robot.subsystems.TankDriveSub;
+//import frc.robot.subsystems.TankDriveSub;
 import frc.robot.Constants.GrabberConstants;
 import frc.robot.Constants.GrabberConstants.PivotStates;
 import frc.robot.subsystems.GrabberSubsystem;
@@ -29,8 +29,10 @@ public class AutoPickUp extends SequentialCommandGroup {
     addCommands(
     new ParallelCommandGroup(new SetGrabberPivotState(m_GrabberSubsystem, PivotStates.kFull), new SetWinchState(m_WinchSubsystem, WinchStates.kFull)),
     new WaitCommand(1),
-    new ParallelDeadlineGroup(new WaitCommand(2), new MoveIntake(m_GrabberSubsystem, .1)),
+    new ParallelDeadlineGroup(new WaitCommand(2), new MoveIntake(m_GrabberSubsystem, 0.1)),
     new ParallelCommandGroup(new SetGrabberPivotState(m_GrabberSubsystem, PivotStates.kGround), new SetWinchState(m_WinchSubsystem, WinchStates.kGround)),
+    new ParallelDeadlineGroup(new WaitCommand(2), new MoveIntake(m_GrabberSubsystem,  -0.1)),
+
     new WaitCommand(1)
     );
   }

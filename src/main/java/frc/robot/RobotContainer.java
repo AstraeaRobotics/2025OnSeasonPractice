@@ -14,6 +14,8 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj.PS4Controller;
 import frc.robot.commands.*;
+//import frc.robot.commands.unused.Autos;
+//import frc.robot.commands.unused.ExampleCommand;
 import frc.robot.subsystems.*;
 
 /**
@@ -91,6 +93,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An example command will be run in autonomous
-    return Autos.exampleAuto(m_exampleSubsystem);
+    return null;
   }
 }

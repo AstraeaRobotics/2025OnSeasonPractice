@@ -11,11 +11,11 @@ public class MoveIntake extends Command {
   GrabberSubsystem m_GrabberSubsystem;
   double speed;
   /** Creates a new Intake. */
-  public MoveIntake(GrabberSubsystem GrabberSubsystem, double speed ) {
+  public MoveIntake(GrabberSubsystem grabberSubsystem, double speed ) {
     // Use addRequirements() here to declare subsystem dependencies.
-    this.m_GrabberSubsystem = GrabberSubsystem;
+    this.m_GrabberSubsystem = grabberSubsystem;
     this.speed = speed;
-    addRequirements(GrabberSubsystem);
+    addRequirements(grabberSubsystem);
   }
 
   // Called when the command is initially scheduled.
