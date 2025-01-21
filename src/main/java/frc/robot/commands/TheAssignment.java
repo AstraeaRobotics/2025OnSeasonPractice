@@ -40,9 +40,9 @@ public class TheAssignment extends SequentialCommandGroup {
 
       new ParallelCommandGroup(
         new SetGrabberState(grabberSub, GrabberStates.kHigh),
-        new SetWinchState(winchSub, WinchStates.kTop),
+        new SetWinchState(winchSub, WinchStates.kTop)
         //new DriveToDistance(driveSub, -driveSpeed, distance)
-      ),
+      )
 
       // new ParallelDeadlineGroup(
       //   new WaitCommand(1.5),

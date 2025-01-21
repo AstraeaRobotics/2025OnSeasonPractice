@@ -15,7 +15,9 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.subsystems.GrabberSubsystem;
 import frc.robot.subsystems.WinchSubsystem;
 import frc.robot.commands.Grabber.*;
+import frc.robot.commands.Winch.SetWinchState;
 import frc.robot.Constants.GrabberConstants.*;
+import frc.robot.Constants.WinchConstants.WinchStates;
 import frc.robot.commands.TheAssignment;
 
 
@@ -46,7 +48,7 @@ public class RobotContainer {
   
     /** The container for the robot. Contains subsystems, OI devices, and commands. */
     public RobotContainer() {
-      m_TankDriveSubsystem.setDefaultCommand(new JoystickDrive(m_TankDriveSubsystem, m_controller::getLeftY));
+     // m_TankDriveSubsystem.setDefaultCommand(new JoystickDrive(m_TankDriveSubsystem, m_controller::getLeftY));
   
     // Configure the trigger bindings
     configureBindings();}
@@ -66,13 +68,14 @@ public class RobotContainer {
   
     //kCircle.onTrue(new DriveToDistance(m_TankDriveSubsystem, 0.1, 0.1));
     kTriangle.onTrue(new SetGrabberState(m_grabbersubsystem, GrabberStates.kLow));
-    kCross.onTrue(new SetGrabberState(m_grabbersubsystem, GrabberStates.kMid));
+    //kCross.onTrue(new SetGrabberState(m_grabbersubsystem, GrabberStates.kMid));
     kSquare.onTrue(new SetGrabberState(m_grabbersubsystem, GrabberStates.kHigh));
     kCircle.onTrue(new SetWinchState(m_winchsubsystem, WinchStates.kBottom));
     kR1.onTrue(new SetWinchState(m_winchsubsystem, WinchStates.kMiddle));
     kR2.onTrue(new SetWinchState(m_winchsubsystem, WinchStates.kTop));
-    kR3.onTrue(new TheAssignment(m_grabbersubsystem, m_winchsubsystem,  m_TankDriveSubsystem, 0.1, 0.1, 0.1));
-    
+    //kR3.onTrue(new TheAssignment(m_grabbersubsystem, m_winchsubsystem,  m_TankDriveSubsystem, 0.1, 0.1, 0.1));
+    kL1.onTrue(new MoveGrabber(m_grabbersubsystem, 0.1));
+    kL2.onTrue(new MoveGrabber(m_grabbersubsystem, -0.1));
 
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.

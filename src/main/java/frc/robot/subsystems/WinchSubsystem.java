@@ -68,7 +68,7 @@ public class WinchSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     SmartDashboard.putNumber("Elevator Encoder", m_encoder.getPosition());
-    SmartDashboard.putNumber("PID Output", getMotorPID());
+    SmartDashboard.putNumber(" WinchPID Output", getMotorPID());
     setMotorPID(getMotorPID());
     // This method will be called once per scheduler run
   }

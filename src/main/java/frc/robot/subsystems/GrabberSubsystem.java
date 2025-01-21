@@ -6,9 +6,11 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.PIDCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 import frc.robot.Constants.GrabberConstants;
 import frc.robot.Constants.GrabberConstants.GrabberStates;
 import com.revrobotics.CANSparkLowLevel.MotorType;
+import com.revrobotics.AbsoluteEncoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 
@@ -30,19 +32,21 @@ public class GrabberSubsystem extends SubsystemBase {
     pivotMotor= new CANSparkMax(8, MotorType.kBrushless);
     intakeMotor= new CANSparkMax(9, MotorType.kBrushless);
 
-    pivotEncoder = pivotMotor.getEncoder();
+    pivotEncoder = pivotMotor.getAbsoluteEncoder();
     intakeEncoder= intakeMotor.getEncoder();
+    // state = GrabberStates.kHigh;
+    // setPoint = state.getGrabberSetPoint();
 
     m_grabberPidController = new PIDController(GrabberConstants.kP, GrabberConstants.kI, GrabberConstants.kD);
 
-    configureMotors();
+    // configureMotors();
   }
 
   
-  private void configureMotors() {
-    intakeEncoder.setPosition(0);
-    pivotEncoder.setPosition(0);
-  }
+  // private void configureMotors() {
+  //   intakeEncoder.setPosition(0);
+  //   pivotEncoder.getPosition();
+  // }
 
   public void moveIntakeMotor(double speed){
     intakeMotor.set(speed);
@@ -80,7 +84,7 @@ public class GrabberSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     SmartDashboard.putNumber("Pivot Encoder", pivotEncoder.getPosition());
-    SmartDashboard.putNumber("PID Output", getMotorPID());
+    SmartDashboard.putNumber(" Grabber PID Output", getMotorPID());
     setMotorPID(getMotorPID());
     // This method will be called once per scheduler run
   } 
