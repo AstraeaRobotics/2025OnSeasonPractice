@@ -11,10 +11,11 @@ public class MoveIntake extends Command {
   GrabberSubsystem m_GrabberSubsystem;
   double speed;
   /** Creates a new Intake. */
-  public MoveIntake(GrabberSubsystem m_GrabberSubsystem, double speed ) {
+  public MoveIntake(GrabberSubsystem GrabberSubsystem, double speed ) {
     // Use addRequirements() here to declare subsystem dependencies.
-    this.m_GrabberSubsystem = m_GrabberSubsystem;
+    this.m_GrabberSubsystem = GrabberSubsystem;
     this.speed = speed;
+    addRequirements(GrabberSubsystem);
   }
 
   // Called when the command is initially scheduled.
@@ -29,7 +30,9 @@ public class MoveIntake extends Command {
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    m_GrabberSubsystem.setIntakeMotor(0);
+  }
 
   // Returns true when the command should end.
   @Override

@@ -30,10 +30,11 @@ public class GrabberSubsystem extends SubsystemBase {
         // Initializing motors and encoders for both pivot and intake systems
         pivotMotor = new CANSparkMax(8, CANSparkMax.MotorType.kBrushless);
         intakeMotor = new CANSparkMax(9, CANSparkMax.MotorType.kBrushless);
-        
+        state = PivotStates.kGround;
         pivotEncoder = pivotMotor.getAbsoluteEncoder();
         intakeEncoder = intakeMotor.getEncoder();
         desiredSetPoint = state.getPivotSetPoint();
+        
 
         // Initialize PID controller for precise control of pivot motor
         pid = new PIDController(0.001, 0.0, 0.0);  // Adjust with correct PID constants

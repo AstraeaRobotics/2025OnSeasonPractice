@@ -24,7 +24,7 @@ import frc.robot.subsystems.*;
  */
 public class RobotContainer {
 
-  private final TankDriveSub driveSubsystem = new TankDriveSub();
+  //private final TankDriveSub driveSubsystem = new TankDriveSub();
     //private final PS4Controller driverController = new PS4Controller(1);
     //private final Joystick driverJoystick = new Joystick(1);
     private final WinchSubsystem winchSub = new WinchSubsystem();
@@ -38,7 +38,7 @@ public class RobotContainer {
     private final JoystickButton kr1 = new JoystickButton(m_Controller, PS4Controller.Button.kR1.value);
     private final JoystickButton kl1= new JoystickButton(m_Controller, PS4Controller.Button.kL1.value);
     private final JoystickButton kr2 = new JoystickButton(m_Controller, PS4Controller.Button.kR2.value);
-    private final JoystickButton kl2 = new JoystickButton(m_Controller, PS4Controller.Button.kL1.value);
+    private final JoystickButton kl2 = new JoystickButton(m_Controller, PS4Controller.Button.kL2.value);
     
 
   // The robot's subsystems and commands are defined here...
@@ -76,7 +76,7 @@ public class RobotContainer {
     m_driverController.b().whileTrue(m_exampleSubsystem.exampleMethodCommand());
 
     kTriangle.onTrue(new SetWinchState(winchSub, WinchStates.kGround));
-    kCircle.onTrue(new SetWinchState(winchSub, WinchStates.kHalf));
+    kCircle.onTrue(new AutoPickUp());
     kCross.onTrue(new SetWinchState(winchSub, WinchStates.kFull));
     kr2.onTrue(new SetGrabberPivotState(grabberSub , PivotStates.kGround));
     kl2.onTrue(new SetGrabberPivotState(grabberSub, PivotStates.kFull));

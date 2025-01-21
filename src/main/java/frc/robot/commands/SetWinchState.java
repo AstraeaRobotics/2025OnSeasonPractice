@@ -4,41 +4,27 @@
 
 package frc.robot.commands;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.WinchSubsystem;
 import frc.robot.Constants.WinchConstants;
 import frc.robot.Constants.WinchConstants.WinchStates;
 
-public class SetWinchState extends Command {
-  /** Creates a new SetWinchState. */
+// NOTE:  Consider using this command inline, rather than writing a subclass.  For more
+// information, see:
+// https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
+public class SetWinchState extends InstantCommand {
   private final WinchSubsystem m_winchSubsystem;
   private final WinchStates m_desiredState;
-  public SetWinchState(WinchSubsystem m_winchSubsystem, WinchStates m_desiredState) {
+  public SetWinchState(WinchSubsystem winchSubsystem, WinchStates desiredState) {
     // Use addRequirements() here to declare subsystem dependencies.
-    this.m_desiredState = m_desiredState;
-    this.m_winchSubsystem = m_winchSubsystem;
-    addRequirements(m_winchSubsystem);
+    this.m_desiredState = desiredState;
+    this.m_winchSubsystem = winchSubsystem;
+    addRequirements(winchSubsystem);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
-    m_winchSubsystem.setState(m_desiredState);
-  }
-
-  // Called every time the scheduler runs while the command is scheduled.
-  @Override
-  public void execute() {}
-
-  // Called once the command ends or is interrupted.
-  @Override
-  public void end(boolean interrupted) {}
-
-  // Returns true when the command should end.
-  @Override
-  public boolean isFinished() {
-    return false;
-  }
+  public void initialize() {}
 }

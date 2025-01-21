@@ -50,7 +50,7 @@ public final class Constants {
 
       kGround(0),
       kHalf(-139),
-      kFull(-225);
+      kFull(-205);
 
       private final double winchSetPoint;
       
