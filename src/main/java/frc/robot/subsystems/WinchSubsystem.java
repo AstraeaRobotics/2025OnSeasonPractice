@@ -24,7 +24,7 @@ public class WinchSubsystem extends SubsystemBase {
 
   public WinchSubsystem() {
     // Initialize motor and encoder
-    motor = new CANSparkMax(Constants.WinchConstants.kWinchPort, MotorType.kBrushless);
+    motor = new CANSparkMax(5, MotorType.kBrushless);
     encoder = motor.getEncoder();
 
     // Configure PID controller
@@ -34,7 +34,7 @@ public class WinchSubsystem extends SubsystemBase {
     
    // configureEncoder();
   }
-  public void setMotor( double speed){
+  public void setMotor(double speed){
     motor.set(speed);
   }
   public void setState(WinchStates tempState){
@@ -45,7 +45,7 @@ public class WinchSubsystem extends SubsystemBase {
     return encoder.getPosition();
   }
   public double getDesiredSetPoint(){
-return desiredSetPoint;
+    return desiredSetPoint;
   }
   public double getCurrentPIDOutput(){
     return pidController.calculate(encoder.getPosition(), desiredSetPoint);
@@ -53,7 +53,6 @@ return desiredSetPoint;
   
   // Reset encoder position and configure settings
   
-
    @Override
   public void periodic() {
     // This method will be called once per scheduler run

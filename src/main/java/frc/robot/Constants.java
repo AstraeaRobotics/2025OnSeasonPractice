@@ -25,8 +25,8 @@ public final class Constants {
     public enum PivotStates{
 
 
-      kGround(0.23),
-      kFull(0.057);
+      kGround(0.3),
+      kFull(0.65);
       private double pivotSetPoint;
       private PivotStates(double pivotSetPoint){
       this.pivotSetPoint = pivotSetPoint;
@@ -48,9 +48,9 @@ public final class Constants {
     // Define states for winch
     public enum WinchStates {
 
-      kGround(-10),
-      kHalf(0),
-      kFull(50);
+      kGround(0),
+      kHalf(-139),
+      kFull(-225);
 
       private final double winchSetPoint;
       

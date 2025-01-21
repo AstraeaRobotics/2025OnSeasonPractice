@@ -7,12 +7,14 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.GrabberSubsystem;
 
-public class Intake extends Command {
+public class MoveIntake extends Command {
   GrabberSubsystem m_GrabberSubsystem;
+  double speed;
   /** Creates a new Intake. */
-  public Intake(GrabberSubsystem m_GrabberSubsystem ) {
+  public MoveIntake(GrabberSubsystem m_GrabberSubsystem, double speed ) {
     // Use addRequirements() here to declare subsystem dependencies.
     this.m_GrabberSubsystem = m_GrabberSubsystem;
+    this.speed = speed;
   }
 
   // Called when the command is initially scheduled.
@@ -22,7 +24,7 @@ public class Intake extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_GrabberSubsystem.setIntakeMotor(.1);
+    m_GrabberSubsystem.setIntakeMotor(speed);
   }
 
   // Called once the command ends or is interrupted.

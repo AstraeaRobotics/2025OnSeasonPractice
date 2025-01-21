@@ -25,8 +25,8 @@ import frc.robot.subsystems.*;
 public class RobotContainer {
 
   private final TankDriveSub driveSubsystem = new TankDriveSub();
-    private final PS4Controller driverController = new PS4Controller(1);
-    private final Joystick driverJoystick = new Joystick(1);
+    //private final PS4Controller driverController = new PS4Controller(1);
+    //private final Joystick driverJoystick = new Joystick(1);
     private final WinchSubsystem winchSub = new WinchSubsystem();
     private final GrabberSubsystem grabberSub = new GrabberSubsystem();
 
@@ -54,7 +54,7 @@ public class RobotContainer {
     configureBindings();
 
     //To set default to drivebase
-    driveSubsystem.setDefaultCommand(new Drive(driveSubsystem, driverController::getLeftY, driverController::getLeftX));
+    //driveSubsystem.setDefaultCommand(new Drive(driveSubsystem, driverController::getLeftY, driverController::getLeftX));
   }
 
   /**

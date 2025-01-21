@@ -28,45 +28,42 @@ public class GrabberSubsystem extends SubsystemBase {
     /** Creates a new GrabberSubsystem instance. */
     public GrabberSubsystem() {
         // Initializing motors and encoders for both pivot and intake systems
-        pivotMotor = new CANSparkMax(1, CANSparkMax.MotorType.kBrushless);
-        intakeMotor = new CANSparkMax(2, CANSparkMax.MotorType.kBrushless);
+        pivotMotor = new CANSparkMax(8, CANSparkMax.MotorType.kBrushless);
+        intakeMotor = new CANSparkMax(9, CANSparkMax.MotorType.kBrushless);
         
         pivotEncoder = pivotMotor.getAbsoluteEncoder();
         intakeEncoder = intakeMotor.getEncoder();
         desiredSetPoint = state.getPivotSetPoint();
+
         // Initialize PID controller for precise control of pivot motor
         pid = new PIDController(0.001, 0.0, 0.0);  // Adjust with correct PID constants
-        
-        
     }
 
     // Method to control the pivot motor speed
     public void setPivotMotor(double speed){
         pivotMotor.set(speed);
-      }
+    }
+
     public void setIntakeMotor(double speed){
         intakeMotor.set(speed);
     }
 
-      public double getPivotPosition(){
-        return pivotEncoder.getPosition();
-      }
+    public double getPivotPosition(){
+      return pivotEncoder.getPosition();
+    }
     
-      public double getPivotVelocity(){
-        return pivotEncoder.getVelocity();  
-      }
-    
-      public double getDesiredSetPoint(){
-        return desiredSetPoint;
-      }
+    public double getDesiredSetPoint(){
+      return desiredSetPoint;
+    }
       
-      public void setState(PivotStates tempState){
-        state = tempState;
-        desiredSetPoint = state.getPivotSetPoint();
-      }
-      public double getCurrentPIDOutput(){
-        return pid.calculate(pivotEncoder.getPosition(), desiredSetPoint);
-      }
+    public void setState(PivotStates tempState){
+      state = tempState;
+      desiredSetPoint = state.getPivotSetPoint();
+    }
+    
+    public double getCurrentPIDOutput(){
+      return pid.calculate(pivotEncoder.getPosition(), desiredSetPoint);
+    }
 
      @Override
   public void periodic() {
