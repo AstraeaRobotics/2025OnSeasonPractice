@@ -12,7 +12,7 @@ import frc.robot.Constants.GrabberConstants.PivotStates;
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
 public class SetGrabberPivotState extends InstantCommand {
-  PivotStates m_desiredState;
+  PivotStates m_desiredState = PivotStates.kGround;
   GrabberSubsystem m_GrabberSubsystem;
   public SetGrabberPivotState(GrabberSubsystem grabberSubsystem, PivotStates desiredState) {
     // Use addRequirements() here to declare subsystem dependencies.

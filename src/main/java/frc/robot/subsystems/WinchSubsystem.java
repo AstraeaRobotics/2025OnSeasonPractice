@@ -23,6 +23,7 @@ public class WinchSubsystem extends SubsystemBase {
   
 
   public WinchSubsystem() {
+    
     // Initialize motor and encoder
     motor = new CANSparkMax(5, MotorType.kBrushless);
     encoder = motor.getEncoder();

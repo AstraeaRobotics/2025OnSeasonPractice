@@ -6,12 +6,10 @@ package frc.robot.subsystems;
 
 import com.revrobotics.AbsoluteEncoder;
 import com.revrobotics.CANSparkMax;
-import com.revrobotics.AbsoluteEncoder;
 import com.revrobotics.RelativeEncoder;
+
 import edu.wpi.first.math.controller.PIDController;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants.GrabberConstants;
 import frc.robot.Constants.GrabberConstants.PivotStates;
 
 public class GrabberSubsystem extends SubsystemBase {
@@ -61,9 +59,11 @@ public class GrabberSubsystem extends SubsystemBase {
       state = tempState;
       desiredSetPoint = state.getPivotSetPoint();
     }
-    
+    public double getPivotEncoder(){
+      return pivotEncoder.getPosition();
+    }
     public double getCurrentPIDOutput(){
-      return pid.calculate(pivotEncoder.getPosition(), desiredSetPoint);
+      return pid.calculate(getPivotEncoder(), desiredSetPoint);
     }
 
      @Override

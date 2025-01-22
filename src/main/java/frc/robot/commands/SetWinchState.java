@@ -15,8 +15,9 @@ import frc.robot.Constants.WinchConstants.WinchStates;
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
 public class SetWinchState extends InstantCommand {
-  private final WinchSubsystem m_winchSubsystem;
-  private final WinchStates m_desiredState;
+  private WinchSubsystem m_winchSubsystem;
+  private WinchStates m_desiredState = WinchStates.kGround;
+  
   public SetWinchState(WinchSubsystem winchSubsystem, WinchStates desiredState) {
     // Use addRequirements() here to declare subsystem dependencies.
     this.m_desiredState = desiredState;

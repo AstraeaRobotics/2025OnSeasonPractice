@@ -4,6 +4,8 @@
 
 package frc.robot.commands;
 
+import org.ejml.dense.fixed.MatrixFeatures_DDF2;
+
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.ParallelDeadlineGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
@@ -23,7 +25,9 @@ public class AutoPickUp extends SequentialCommandGroup {
   /** Creates a new AutoPickUp. */
   GrabberSubsystem m_GrabberSubsystem;
   WinchSubsystem m_WinchSubsystem;
-  public AutoPickUp() {
+  public AutoPickUp(GrabberSubsystem grabbersub, WinchSubsystem winchsub) {
+    this.m_GrabberSubsystem = grabbersub;
+    this.m_WinchSubsystem = winchsub;
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
