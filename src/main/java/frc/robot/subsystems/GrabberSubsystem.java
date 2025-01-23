@@ -9,7 +9,9 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 
 import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants.GrabberConstants;
 import frc.robot.Constants.GrabberConstants.PivotStates;
 
 public class GrabberSubsystem extends SubsystemBase {
@@ -28,14 +30,15 @@ public class GrabberSubsystem extends SubsystemBase {
         // Initializing motors and encoders for both pivot and intake systems
         pivotMotor = new CANSparkMax(8, CANSparkMax.MotorType.kBrushless);
         intakeMotor = new CANSparkMax(9, CANSparkMax.MotorType.kBrushless);
-        state = PivotStates.kGround;
+        state = PivotStates.kFull;
         pivotEncoder = pivotMotor.getAbsoluteEncoder();
         intakeEncoder = intakeMotor.getEncoder();
         desiredSetPoint = state.getPivotSetPoint();
-        
+        pivotEncoder.setPositionConversionFactor(GrabberConstants.pivotConversionFactor);
+
 
         // Initialize PID controller for precise control of pivot motor
-        pid = new PIDController(0.001, 0.0, 0.0);  // Adjust with correct PID constants
+        pid = new PIDController(GrabberConstants.KP, GrabberConstants.KI, GrabberConstants.KD);  // Adjust with correct PID constants
     }
 
     // Method to control the pivot motor speed
@@ -70,5 +73,6 @@ public class GrabberSubsystem extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
     pivotMotor.set(getCurrentPIDOutput());
+    SmartDashboard.putNumber("VALUE:", getCurrentPIDOutput());
   }
 }

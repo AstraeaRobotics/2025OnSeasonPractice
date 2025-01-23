@@ -19,8 +19,9 @@ public final class Constants {
   }
   public static class GrabberConstants{
     public static final double KI = 0;
-    public static final double KP = 0;
+    public static final double KP = 0.6;
     public static final double KD = 0;
+    public static final double pivotConversionFactor = 1;
 
     public enum PivotStates{
 
@@ -39,7 +40,7 @@ public final class Constants {
   }
   public static class WinchConstants {
     public static final double KI = 0;
-    public static final double KP = 0;
+    public static final double KP = 0.1;
     public static final double KD = 0;
     // Winch motor and encoder constants
     public static final int kWinchPort = 0;

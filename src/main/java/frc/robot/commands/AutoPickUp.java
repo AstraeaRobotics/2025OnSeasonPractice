@@ -36,7 +36,6 @@ public class AutoPickUp extends SequentialCommandGroup {
     new ParallelDeadlineGroup(new WaitCommand(2), new MoveIntake(m_GrabberSubsystem, 0.1)),
     new ParallelCommandGroup(new SetGrabberPivotState(m_GrabberSubsystem, PivotStates.kGround), new SetWinchState(m_WinchSubsystem, WinchStates.kGround)),
     new ParallelDeadlineGroup(new WaitCommand(2), new MoveIntake(m_GrabberSubsystem,  -0.1)),
-
     new WaitCommand(1)
     );
   }
